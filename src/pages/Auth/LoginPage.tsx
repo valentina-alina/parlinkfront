@@ -8,8 +8,10 @@ import { useNavigate } from 'react-router-dom';
 
 import { signin } from '../../services/api/auth';
 import { Card } from 'flowbite-react';
+import { AxiosError } from 'axios';
+import ParLink from '../../assets/parlink.png';
 
-export default function LoginPage() {
+export default function LoginPage({ setIsConnected }: { setIsConnected: (status: boolean) => void }) {
   const navigate = useNavigate();
   const [loginFailed, setLoginFailed] = useState(false);
 
@@ -27,16 +29,29 @@ export default function LoginPage() {
     onSubmit: async values => {
       try {
         const response = await signin(values);
-
         if (response.data && response.data.access_token) {
           localStorage.setItem('access_token', response.data.access_token);
           localStorage.setItem('refresh_token', response.data.refresh_token);
           setLoginFailed(false);
+          setIsConnected(true);
           navigate('/ads-grid');
         }
       } catch (error) {
-        console.error('Login failed', error);
         setLoginFailed(true);
+
+        if (error instanceof AxiosError) {
+          if (error.response) {
+            console.error('Response error:', error.response);
+          } else if (error.request) {
+            console.error('Request error:', error.request);
+          } else {
+            console.error('Axios error:', error.message);
+          }
+        } else if (error instanceof Error) {
+          console.error('Login failed:', error.message);
+        } else {
+          console.error('Unknown error:', error);
+        }
       }
     },
   });
@@ -44,8 +59,8 @@ export default function LoginPage() {
   return (
     <>
       <div className="flex justify-center">
-      <Card className="w-full md:max-w-md md:mx-auto hover:bg-transparent">     
-          <h1 className="font-titleTest text-3xl my-8" data-cy="cypress-title">Connexion</h1><br />
+        <Card className="w-full md:max-w-md md:mx-auto hover:bg-transparent mb-56 sm:mb-16">
+          <img src={ParLink} alt="logo ParLink" className="my-8 h-10 sm:h-13 scale-150" data-cy="cypress-title"/>
           {loginFailed && <p className="text-red-500 text-sm">Identifiants incorrects</p>}
           <form onSubmit={handleSubmit}>
             <div className="mb-5">
@@ -103,9 +118,8 @@ export default function LoginPage() {
           <div className="text-left">
                 <Link to="/createAdmin" className="ms-2 text-sm text-blue-400 dark:text-blue-300 hover:underline">Créer un compte Client</Link>
           </div>
-
-          </Card>
-        </div>
+        </Card>
+      </div>
     </>
   );
 }

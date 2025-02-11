@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getAds, getAdById, getAdsByParams, getCategories, getSubCategories, getAdsByCategories, getAdsBySubCategories } from '../../services/api/ads';
-import MapButton from '../../components/Map/MapButton';
+// import MapButton from '../../components/Map/MapButton';
 import Sidebar from '../../components/Calendar/Sidebar';
 import FullCalendar from '../../components/Calendar/FullCalendar';
 import { EventInput } from '@fullcalendar/core';
@@ -234,7 +234,7 @@ export default function CalendarPage({ searchQuery }: { searchQuery: string }) {
                         events={adsList}
                     />
                 </div>
-                <MapButton />
+                {/* <MapButton /> */}
             </div>
             </div>
         </>

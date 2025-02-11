@@ -9,7 +9,7 @@ import { MdAddToPhotos } from "react-icons/md";
 import {registerClient} from '../../services/api/user'; 
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import Logo from '../../assets/logo.png';
+import Logo from '../../assets/parlink.png';
 
 interface PropUserPage {
   handleSubmitUser: (author:any) => void;
@@ -79,7 +79,7 @@ export default function ClientAdminCreatePage(props: PropUserPage) {
       <div className="p-3">
         <h5 className="text-2xl font-bold tracking-tight text-blue-800 dark:text-white mb-10">
           <img src={Logo} alt="logo ParLink" className="ml-8 h-6 sm:h-9 scale-150"></img>
-          Bienvenue sur votre application <span className='text-red-600'>Par</span><span className='text-blue-900'>Link</span>
+          Bienvenue sur votre application <span className='text-[#283A65]'>Par</span><span className='text-[#50BEDB]'>Link</span>
         </h5>
     
         <div className="flex flex-col md:flex-row md:items-start gap-5 m-3">
