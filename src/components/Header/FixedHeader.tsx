@@ -25,7 +25,7 @@ const FixedHeader: React.FC<FixedHeaderProps> = ({
   handleSubCategoryChange,
 }) => {
   return (
-    <div className=' fixed w-[350px] z-30 top-[130px] lg:top-[120px] lg:w-[1200px] flex flex-row justify-between border-b-2 border-t-2 py-2 font-bodyTest bg-white border-gray-100'>
+    <div className=' fixed w-screen p-10 z-30 top-[80px] lg:w-[1200px] flex flex-row justify-between border-b-2 border-t-2 py-2 font-bodyTest bg-white border-gray-100'>
    {categories.map((category) => (
                     <div className="event_filter_wrapper relative group" key={category}>
                         <div className='relative'>

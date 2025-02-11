@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import RequireAuth from './components/requireAuth';
 import { NavbarBanner } from './components/Navbar/NavbarBanner';
-import { Suspense, lazy, useState } from 'react';
-// import { ProfileInterface } from './services/interfaces/Profile';
+import { Suspense, createContext, lazy, useContext, useEffect, useState } from 'react';
+import { ProfileInterface } from './services/interfaces/Profile';
 import { ContactInterface } from './services/interfaces/Contact';
 import { User } from './services/interfaces/User';
 
@@ -15,7 +15,7 @@ const LegalPage = lazy(() => import('./pages/Legal/LegalPage'));
 const ContactPage = lazy(() => import('./pages/Contact/ContactPage'));
 const UserManagement = lazy(() => import('./pages/User/UserManagement'));
 const UserProfilePage = lazy(() => import('./pages/User/UserProfilePage'));
-// const UserEditProfilePage = lazy(() => import('./pages/User/UserEditProfilePage'));
+const UserEditProfilePage = lazy(() => import('./pages/User/UserEditProfilePage'));
 const CalendarPage = lazy(() => import('./pages/Calendar/CalendarPage'));
 const MapPage = lazy(() => import('./pages/Map/MapPage'));
 const AdsListPage = lazy(() => import('./pages/Ads/AdsListPage'));
@@ -32,22 +32,43 @@ const AdsDetailPage = lazy(() => import('./pages/Ads/AdsDetailPage'));
 const ForgotPswdPage = lazy(() => import('./pages/Auth/ForgotPswd'));
 const FooterNav = lazy(() => import('./components/Footer/FooterNav'));
 
+// Context for authentication
+const AuthContext = createContext<{ isConnected: boolean; setIsConnected: (value: boolean) => void } | null>(null);
+
+// Hook to use authentication context
+const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) throw new Error('useAuth must be used within AuthContextProvider');
+  return context;
+};
+
+console.log('useAuth', useAuth);
+
 function App() {
-  const [isConnected, setIsConnected] = useState(false);
-  // const [profiles, setProfiles] = useState<ProfileInterface[]>([]);
+
+  // Authentication State and Synchronization
+  const [isConnected, setIsConnected] = useState<boolean>(() => {
+    return localStorage.getItem('isConnected') === 'true';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('isConnected', String(isConnected));
+  }, [isConnected]);
+  
+  const [profiles, setProfiles] = useState<ProfileInterface[]>([]);
   const [contactForms, setContactForms] = useState<ContactInterface[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // function handleSubmitProfile(profile: ProfileInterface): void {
-  //   setProfiles([...profiles, profile]);
-  // }
+  function handleSubmitProfile(profile: ProfileInterface): void {
+    setProfiles([...profiles, profile]);
+  }
 
   function handleSubmitContactForm(contactForm: ContactInterface): void {
     setContactForms([...contactForms, contactForm]);
   }
 
   return (
-    <>
+    <AuthContext.Provider value={{ isConnected, setIsConnected }}>
       {isConnected && (
         <>
             <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
@@ -102,13 +123,13 @@ function App() {
             </Suspense>
             }
           />
-          {/* <Route path="/edit-my-profile/:idProfile" element=
+          <Route path="/edit-my-profile/:idProfile" element=
             {
             <Suspense fallback={<div>Chargement...</div>}>
-              <UserEditProfilePage handleSubmitProfile={handleSubmitProfile}  />
+              {/* <UserEditProfilePage handleSubmitProfile={handleSubmitProfile}  /> */}
             </Suspense>
             }
-          /> */}
+          />
           <Route path="/ad/:idAd" element=
             {
             <Suspense fallback={<div>Chargement...</div>}>
@@ -211,7 +232,7 @@ function App() {
         />
       </Routes>
       <FooterNav />
-    </>
+    </AuthContext.Provider>
   );
 }
 
