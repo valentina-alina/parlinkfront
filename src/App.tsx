@@ -4,9 +4,10 @@ import './App.css';
 import RequireAuth from './components/requireAuth';
 import { NavbarBanner } from './components/Navbar/NavbarBanner';
 import { Suspense, createContext, lazy, useContext, useEffect, useState } from 'react';
-import { ProfileInterface } from './services/interfaces/Profile';
+// import { ProfileInterface } from './services/interfaces/Profile';
 import { ContactInterface } from './services/interfaces/Contact';
 import { User } from './services/interfaces/User';
+import UserEditProfilePage from './pages/User/UserEditProfilePage';
 
 const Navbar = lazy(() => import('./components/Navbar/Navbar'));
 const PrivateRoute = lazy(() => import('./services/utils/PrivateRoute'));
@@ -15,7 +16,7 @@ const LegalPage = lazy(() => import('./pages/Legal/LegalPage'));
 const ContactPage = lazy(() => import('./pages/Contact/ContactPage'));
 const UserManagement = lazy(() => import('./pages/User/UserManagement'));
 const UserProfilePage = lazy(() => import('./pages/User/UserProfilePage'));
-const UserEditProfilePage = lazy(() => import('./pages/User/UserEditProfilePage'));
+// const UserEditProfilePage = lazy(() => import('./pages/User/UserEditProfilePage'));
 const CalendarPage = lazy(() => import('./pages/Calendar/CalendarPage'));
 const MapPage = lazy(() => import('./pages/Map/MapPage'));
 const AdsListPage = lazy(() => import('./pages/Ads/AdsListPage'));
@@ -55,13 +56,13 @@ function App() {
     localStorage.setItem('isConnected', String(isConnected));
   }, [isConnected]);
   
-  const [profiles, setProfiles] = useState<ProfileInterface[]>([]);
+  // const [profiles, setProfiles] = useState<ProfileInterface[]>([]);
   const [contactForms, setContactForms] = useState<ContactInterface[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  function handleSubmitProfile(profile: ProfileInterface): void {
-    setProfiles([...profiles, profile]);
-  }
+  // function handleSubmitProfile(profile: ProfileInterface): void {
+  //   setProfiles([...profiles, profile]);
+  // }
 
   function handleSubmitContactForm(contactForm: ContactInterface): void {
     setContactForms([...contactForms, contactForm]);
@@ -126,7 +127,7 @@ function App() {
           <Route path="/edit-my-profile/:idProfile" element=
             {
             <Suspense fallback={<div>Chargement...</div>}>
-              {/* <UserEditProfilePage handleSubmitProfile={handleSubmitProfile}  /> */}
+              <UserEditProfilePage  />
             </Suspense>
             }
           />
