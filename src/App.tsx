@@ -73,9 +73,10 @@ function App() {
       {isConnected && (
         <>
             <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-            <NavbarBanner />
+           
         </>
       )}
+       <NavbarBanner />
       <Routes>
         <Route path="/" element=
           {

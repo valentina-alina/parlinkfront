@@ -13,7 +13,8 @@ export function NavbarBanner() {
                     <p className="flex items-center text-sm font-h1 text-gray-500 dark:text-gray-400">
                         <MdAnnouncement className="mr-4 h-6 w-6 bannerIcon" />
                         <span className="[&_p]:inline text-lg bannerText">
-                            Attention! Ceci est un projet, cette application n'est pas disponible pour l'instant
+                        🔧 Application en cours de développement 🔧<br />
+                         Certaines fonctionnalités peuvent ne pas être finalisées. Merci pour votre compréhension !
                         </span>
                     </p>
                 </div>
