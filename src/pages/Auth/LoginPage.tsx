@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { signin } from '../../services/api/auth';
 import { Card } from 'flowbite-react';
+import ParLink from '../../assets/parlink.png';
 
 export default function LoginPage({ setIsConnected }: { setIsConnected: (status: boolean) => void } ) {
   const navigate = useNavigate();
@@ -46,6 +47,7 @@ export default function LoginPage({ setIsConnected }: { setIsConnected: (status:
     <>
       <div className="flex justify-center">
       <Card className="w-full md:max-w-md md:mx-auto hover:bg-transparent">     
+      <img src={ParLink} alt="logo ParLink" className="h-10 sm:h-13 scale-150"/>
           <h5 className="text-2xl font-bold tracking-tight text-blue-800 dark:text-white mb-3"
           data-cy="cypress-title">Connexion</h5>
           {loginFailed && <p className="text-red-500 text-sm">Identifiants incorrects</p>}
@@ -84,7 +86,7 @@ export default function LoginPage({ setIsConnected }: { setIsConnected: (status:
               <p className='text-start'>Username : admin@email.fr</p>
               <p className='text-start'>Mdp : admin</p>
             </div>
-            
+
             <div  className=" flex items-center justify-center">
             <button
               type="submit"

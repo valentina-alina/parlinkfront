@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Button, FloatingLabel, Card } from 'flowbite-react';
+import {  FloatingLabel, Card } from 'flowbite-react';
 import {  updateUserPswd } from '../../services/api/user'; 
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
