@@ -22,6 +22,8 @@ export default function FooterNav() {
     const currentYear = new Date().getFullYear(); 
     
     return (
+        <>
+     <div className='h-64'></div>
         <div className='mt-52'>
             <Footer className="w-full bg-gray-200 scale-100 absolute bottom-0 left-0">                
                 <div className="w-full">
@@ -146,5 +148,6 @@ export default function FooterNav() {
                 </div>
             </div>
         </div>
+        </>
     );
 }

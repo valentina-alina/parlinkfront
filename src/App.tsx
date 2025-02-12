@@ -8,7 +8,8 @@ import { Suspense, createContext, lazy, useContext, useEffect, useState } from '
 import { ContactInterface } from './services/interfaces/Contact';
 import { User } from './services/interfaces/User';
 import UserEditProfilePage from './pages/User/UserEditProfilePage';
-import AproposPage from './pages/Apropos/AproposPage';
+import AproposPage from './pages/About/AboutPage';
+import AboutPage from './pages/About/AboutPage';
 
 const Navbar = lazy(() => import('./components/Navbar/Navbar'));
 const PrivateRoute = lazy(() => import('./services/utils/PrivateRoute'));
@@ -88,10 +89,10 @@ function App() {
           </Suspense>
           }
         />
-            <Route path="/apropos" element=
+            <Route path="/about" element=
             {
             <Suspense fallback={<div>Chargement...</div>}>
-           <AproposPage/>
+           <AboutPage/>
             </Suspense>
             }
           />

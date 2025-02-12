@@ -2,7 +2,7 @@ import { Card } from "flowbite-react";
 import { Link } from "react-router-dom";
 import Logo from '../../assets/parlink.png';
 
-export default function AproposPage() {
+export default function AboutPage() {
     return (
       <div className="flex flex-col justify-center items-center p-2">
         <Card className="w-full p-6 shadow-lg bg-white rounded-2xl">
