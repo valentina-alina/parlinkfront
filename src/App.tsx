@@ -10,6 +10,9 @@ import { User } from './services/interfaces/User';
 import UserEditProfilePage from './pages/User/UserEditProfilePage';
 import AproposPage from './pages/About/AboutPage';
 import AboutPage from './pages/About/AboutPage';
+import CookiesPage from './components/Cookies/CookiesPage';
+import MobilePage from './components/Mobile/MobilePage';
+import DesktopPage from './components/Desktop/DesktopPage';
 
 const Navbar = lazy(() => import('./components/Navbar/Navbar'));
 const PrivateRoute = lazy(() => import('./services/utils/PrivateRoute'));
@@ -34,6 +37,9 @@ const AdSubscriptionPage = lazy(() => import('./pages/Ads/AdSubscriptionPage'));
 const AdsDetailPage = lazy(() => import('./pages/Ads/AdsDetailPage'));
 const ForgotPswdPage = lazy(() => import('./pages/Auth/ForgotPswd'));
 const FooterNav = lazy(() => import('./components/Footer/FooterNav'));
+const SiteMapPage = lazy(() => import('./components/SiteMap/SiteMap'));
+const Error404Page = lazy(() => import('./components/ErrorPages/Error404'));
+const Error418Page = lazy(() => import('./components/ErrorPages/Error418'));
 
 // Context for authentication
 const AuthContext = createContext<{ isConnected: boolean; setIsConnected: (value: boolean) => void } | null>(null);
@@ -237,12 +243,53 @@ function App() {
             }
           />
         </Route>
-        
+        <Route path="/sitemap" element=
+            {
+            <Suspense fallback={<div>Chargement...</div>}>
+              <SiteMapPage />
+            </Suspense>
+            }
+          />
+                    <Route path="/cookies" element=
+            {
+            <Suspense fallback={<div>Chargement...</div>}>
+              <CookiesPage />
+            </Suspense>
+            }
+          />
+          <Route path="/mobile" element=
+            {
+            <Suspense fallback={<div>Chargement...</div>}>
+              <MobilePage />
+            </Suspense>
+            }
+          />
+          <Route path="/desktop" element=
+            {
+            <Suspense fallback={<div>Chargement...</div>}>
+              <DesktopPage />
+            </Suspense>
+            }
+          />
       
         <Route path="*" element=
           {
           <Suspense fallback={<div>Chargement...</div>}>
             <NotFoundPage />
+          </Suspense>
+          }
+        />
+        <Route path="/404" element=
+          {
+          <Suspense fallback={<div>Chargement...</div>}>
+            <Error404Page />
+          </Suspense>
+          }
+        />
+        <Route path="/418" element=
+          {
+          <Suspense fallback={<div>Chargement...</div>}>
+            <Error418Page />
           </Suspense>
           }
         />
