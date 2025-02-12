@@ -20,6 +20,12 @@ const navigationItems = [
 
 export default function FooterNav() {
     const currentYear = new Date().getFullYear(); 
+    const handleLogout = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        event.preventDefault();
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('isConnected');
+        location.href = "/";
+    };
     
     return (
         <>
@@ -138,9 +144,10 @@ export default function FooterNav() {
                                     </Link>
                                 </ListGroup.Item>
                                 <ListGroup.Item>
-                                    <p>
-                                        Déconnexion
-                                    </p>
+                                <Link  to="#" onClick={handleLogout} >
+                                                Déconnexion
+                                            </Link>  
+                                 
                                 </ListGroup.Item>
                             </ListGroup>
                         </div>
