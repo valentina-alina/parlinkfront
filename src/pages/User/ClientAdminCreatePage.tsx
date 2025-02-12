@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 
 import { FloatingLabel, Card } from "flowbite-react";
 // GET subject from bdd 
-import { MdAddToPhotos } from "react-icons/md";
+
 
 import {registerClient} from '../../services/api/user'; 
 import { Link } from 'react-router-dom';

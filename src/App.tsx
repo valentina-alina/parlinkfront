@@ -8,7 +8,7 @@ import { Suspense, createContext, lazy, useContext, useEffect, useState } from '
 import { ContactInterface } from './services/interfaces/Contact';
 import { User } from './services/interfaces/User';
 import UserEditProfilePage from './pages/User/UserEditProfilePage';
-import AproposPage from './pages/About/AboutPage';
+
 import AboutPage from './pages/About/AboutPage';
 import CookiesPage from './components/Cookies/CookiesPage';
 import MobilePage from './components/Mobile/MobilePage';
