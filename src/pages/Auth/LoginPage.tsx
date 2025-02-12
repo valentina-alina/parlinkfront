@@ -79,10 +79,12 @@ export default function LoginPage({ setIsConnected }: { setIsConnected: (status:
               />
               {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
             </div>
+
             <div  className=" flex flex-col text-sm ">
               <p className='text-start'>Username : admin@email.fr</p>
               <p className='text-start'>Mdp : admin</p>
             </div>
+            
             <div  className=" flex items-center justify-center">
             <button
               type="submit"
