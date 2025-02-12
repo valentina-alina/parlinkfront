@@ -63,8 +63,7 @@ export default function ClientAdminCreatePage(props: PropUserPage) {
             icon: 'success',
             confirmButtonText: 'Close'
           });
-          // TODO----------------------------------------------------------------
-        } else {
+          } else {
           alert(`Erreur lors de l'ajout de l'utilisateur`);
         }
       } catch (error) {
@@ -78,14 +77,14 @@ export default function ClientAdminCreatePage(props: PropUserPage) {
     <>  
       <div className="p-3">
         <h5 className="text-2xl font-bold tracking-tight text-blue-800 dark:text-white mb-10">
-          <img src={Logo} alt="logo ParLink" className="ml-8 h-6 sm:h-9 scale-150"></img>
+          <img src={Logo} alt="logo ParLink" className="ml-8 h-9 mb-5 scale-150"></img>
           Bienvenue sur votre application <span className='text-[#283A65]'>Par</span><span className='text-[#50BEDB]'>Link</span>
         </h5>
     
         <div className="flex flex-col md:flex-row md:items-start gap-5 m-3">
           <div className="flex flex-col m-3 items-start w-full md:w-1/2">
             <p className="text-justify mb-4">
-              Nous sommes ravis de vous accueillir dans cette plateforme dédiée aux parents d'élèves de votre association. Ici, vous pouvez créer votre comunauté des Parents "en lien".
+              Nous sommes ravis de vous accueillir dans cette plateforme dédiée aux parents d'élèves de votre association. Ici, vous pouvez créer votre comunauté des Parents connectés.
             </p>
             <h5 className="text-xl font-bold tracking-tight text-blue-800 dark:text-white mb-5">
               Votre rôle d'administrateur
@@ -120,15 +119,16 @@ export default function ClientAdminCreatePage(props: PropUserPage) {
                   <FloatingLabel variant="outlined" label="&#9993; name@email.com" sizing="sm" id="email" name="email" onChange={formik.handleChange} value={formik.values.email} />
                   {formik.touched.email && formik.errors.email ? (<div>{formik.errors.email}</div>) : null}
                 </div>
-                <button className="relative flex items-center p-1 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 relative flex gap-2 p-1 mt-2 w-30" type="submit">
+                <button className="relative flex items-center p-1 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-900 gap-2  mt-2 w-30" type="submit">
                   <span className="relative text-white m-1">Créer mon compte</span>
-                  <MdAddToPhotos className="relative text-white h-5 w-5" />
+                 
                 </button>
               </form>
-              <div className="text-left mt-4">
-                <Link to="/login" className="text-sm text-blue-700 dark:text-blue-700 hover:underline">Se connecter</Link>
+              <div className="text-left mt-1">
+                <Link to="/login" className="text-sm text-blue-800 dark:text-blue-800 hover:underline"><strong>Se connecter</strong></Link> 
+                {/* <Link to="/forgot-password-page" className="ms-2 text-sm text-blue-700 dark:text-blue-300 hover:underline">Changer mot de passe</Link> */}
               </div>
-              <Link to="/forgot-password-page" className="ms-2 text-sm text-blue-400 dark:text-blue-300 hover:underline">Changer mot de passe</Link>
+             
             </Card>
           </div>
         </div>

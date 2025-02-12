@@ -5,7 +5,7 @@ import { IoMdAddCircle } from "react-icons/io";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Footer, FooterCopyright, FooterIcon, FooterLink, FooterLinkGroup, FooterTitle } from "flowbite-react";
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { ListGroup, MegaMenu } from "flowbite-react";
 
 const cssClasIcons = "w-[35px] h-[40px]  ";
@@ -29,9 +29,9 @@ export default function FooterNav() {
                         <FooterLinkGroup col>
                             <div className="flex flex-col items-start justify-start">                                
                                 <FooterTitle title="Company" />
-                                <FooterLink href="#" className='sm:hidden'>ParLink</FooterLink>
-                                <FooterLink href="#" className='hidden sm:block'>À propos de ParLink</FooterLink>
-                                <FooterLink href="#">Plan du site</FooterLink>
+                                <FooterLink href="/about" className='sm:hidden'>ParLink</FooterLink>
+                                <FooterLink href="/about" className='hidden sm:block'>À propos de ParLink</FooterLink>
+                                <FooterLink href="/sitemap">Plan du site</FooterLink>
                             </div>
                         </FooterLinkGroup>
 
@@ -41,8 +41,8 @@ export default function FooterNav() {
                                 <FooterLink href="/contact">
                                     <span>Nous contacter</span>
                                 </FooterLink>
-                                <FooterLink href="#" className='sm:hidden'>Cookies</FooterLink>
-                                <FooterLink href="#" className='hidden sm:block'>Paramètres des cookies</FooterLink>
+                                <FooterLink href="/cookies" className='sm:hidden'>Cookies</FooterLink>
+                                <FooterLink href="/cookies" className='hidden sm:block'>Paramètres des cookies</FooterLink>
                             </div>
                         </FooterLinkGroup>
 
@@ -63,21 +63,29 @@ export default function FooterNav() {
                         <FooterLinkGroup col>
                             <div className="flex flex-col items-start justify-start">
                                 <FooterTitle title="download" />
-                                <FooterLink href="#">Mobile</FooterLink>
-                                <FooterLink href="#">Desktop</FooterLink>
+                                <FooterLink href="/mobile">Mobile</FooterLink>
+                                <FooterLink href="/desktop">Desktop</FooterLink>
                             </div>
                         </FooterLinkGroup>
                     </div>
                     <div className="w-full bg-gray-300 px-4 pt-5 pb-24 sm:py-5 flex flex-col sm:flex-row items-center justify-between">
                         <div className="flex space-x-10 sm:space-x-4 sm:mt-0 justify-center items-center mb-3 sm:mb-0">
-                            <FooterIcon href="#" icon={BsFacebook} />
-                            <FooterIcon href="#" icon={BsInstagram} />
-                            <FooterIcon href="#" icon={BsTwitter} />
-                            <FooterIcon href="#" icon={BsGithub} />
-                            <FooterIcon href="#" icon={BsDribbble} />
+                            <FooterIcon href="https://github.com/valentina-alina" target="_blank" icon={BsGithub} />
+                            <FooterIcon href="https://www.linkedin.com/in/valentina-alina/" icon={BsLinkedin} />
+                            <p className="font-bodyTest text-gray-500 font-semibold">
+                                Valentina
+                            </p>
                         </div>
                         <div className='flex justify-center items-center'>
                             <FooterCopyright className='sm:text-xl' href="#" by="AquilDev™, Inc. | Tous droits reservés" year={currentYear} />
+                            <a href="javascript:window.print()" className="sm:ml-2 mt-0.5 text-sm sm:text-lg text-gray-700 sm:text-gray-400 sm:font-semibold">Imprimer la page</a>
+                        </div>
+                        <div className="flex space-x-10 sm:space-x-4 mt-3 sm:mt-0 justify-center items-center mb-3 sm:mb-0">
+                            <FooterIcon href="https://github.com/0Memo" target="_blank" icon={BsGithub} />
+                            <FooterIcon href="https://www.linkedin.com/in/guillaume-mehats/" target="_blank" icon={BsLinkedin} />
+                            <p className="font-bodyTest text-gray-500 font-semibold">
+                                Guillermo
+                            </p>
                         </div>
                     </div>
                 </div>

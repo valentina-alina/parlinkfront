@@ -8,6 +8,7 @@ import { Suspense, createContext, lazy, useContext, useEffect, useState } from '
 import { ContactInterface } from './services/interfaces/Contact';
 import { User } from './services/interfaces/User';
 import UserEditProfilePage from './pages/User/UserEditProfilePage';
+import AproposPage from './pages/Apropos/AproposPage';
 
 const Navbar = lazy(() => import('./components/Navbar/Navbar'));
 const PrivateRoute = lazy(() => import('./services/utils/PrivateRoute'));
@@ -73,18 +74,27 @@ function App() {
       {isConnected && (
         <>
             <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-           
+            {/* <NavbarBanner /> */}
+            
         </>
       )}
-       <NavbarBanner />
+      <NavbarBanner />
       <Routes>
         <Route path="/" element=
           {
           <Suspense fallback={<div>Chargement...</div>}>
-            <LoginPage setIsConnected={setIsConnected} />
+                  
+                     <LoginPage setIsConnected={setIsConnected} />
           </Suspense>
           }
         />
+            <Route path="/apropos" element=
+            {
+            <Suspense fallback={<div>Chargement...</div>}>
+           <AproposPage/>
+            </Suspense>
+            }
+          />
         <Route path="/login" element=
           {
           <Suspense fallback={<div>Chargement...</div>}>
@@ -209,6 +219,8 @@ function App() {
             </Suspense>
             }
           />
+      
+        
           <Route path="/ads-grid" element=
             {
             <Suspense fallback={<div>Chargement...</div>}>
@@ -224,6 +236,7 @@ function App() {
             }
           />
         </Route>
+        
       
         <Route path="*" element=
           {

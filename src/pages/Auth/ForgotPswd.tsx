@@ -129,10 +129,21 @@ export default function ForgotPswdPage(_props: PropUserPage) {
               />
               {formik.touched.password2 && formik.errors.password2 ? (<div>{formik.errors.password2}</div>) : null}
             </div>
-            <Button type="submit" className="mb-0">Soumettre</Button>
+            {/* <Button type="submit" className="mb-0">Soumettre</Button>
+             */}
+             <div  className=" flex items-center justify-center">
+                    <button
+              type="submit"
+              
+              className="relative flex items-center  p-1 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-900 gap-2 mt-2 w-30" 
+            >
+              <span className="relative text-white m-1">Changer le mot de passe</span>
+                             
+            </button>
+            </div>
           </form>
           <div className="text-left">
-            <Link to="/login" className="ms-2 text-sm text-blue-400 dark:text-blue-300 hover:underline">Se connecter</Link>
+            <Link to="/login"className="text-sm text-blue-800 dark:text-blue-800 hover:underline"><strong>Se connecter</strong></Link> 
           </div>
         </Card>
       </div>

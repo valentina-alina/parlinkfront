@@ -180,7 +180,7 @@ export default function NavbarComponent({ searchQuery, setSearchQuery }: NavbarP
                             </div>
                             </Link>
                         <Link data-cy="create-ad" to="/new-ad">
-                            <div className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-700 relative flex gap-2 p-1 mt-7'>
+                            <div className='before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-900 relative flex gap-2 p-1 mt-7'>
                                 <span className="relative text-white m-1">ajout annonce </span> <span>
                                     <MdAddToPhotos className="relative text-white h-5 w-5" />
                                 </span>
